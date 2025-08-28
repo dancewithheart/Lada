@@ -2,9 +2,8 @@ package Leda
 
 import zio.test.Assertion._
 import zio.test._
-import zio.test.junit.JUnitRunnableSpec
 
-object SecureShowTest extends JUnitRunnableSpec {
+object SecureShowTest extends ZIOSpecDefault {
 
   def spec = suite("show")(
     test("convert case class with data to string") {
@@ -13,10 +12,10 @@ object SecureShowTest extends JUnitRunnableSpec {
 
       case class Foo(user: String, age: Long, initial: Char, salary: Double)
 
-      val conf = Foo(user = "John", age = 42, salary = 50.0, initial = 'J')
+      val foo = Foo(user = "John", age = 42, salary = 50.0, initial = 'J')
 
       // when
-      val confStr = implicitly[SecureShow[Foo]].show(conf)
+      val fooStr = implicitly[SecureShow[Foo]].show(foo)
 
       // then
       val expected =
@@ -26,7 +25,7 @@ object SecureShowTest extends JUnitRunnableSpec {
            | initial = 'J',
            | salary = 50.0)""".stripMargin.trim
 
-      assert(confStr)(equalTo(expected))
+      assert(fooStr)(equalTo(expected))
     },
     test("convert case class with data masking password field") {
       // given
