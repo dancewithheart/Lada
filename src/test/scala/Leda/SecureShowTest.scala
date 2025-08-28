@@ -7,7 +7,7 @@ import zio.test.junit.JUnitRunnableSpec
 object SecureShowTest extends JUnitRunnableSpec {
 
   def spec = suite("show")(
-      test("convert case class with data to string") {
+    test("convert case class with data to string") {
       // given
       import Leda.auto.SecureShowDerivation._
 
@@ -28,7 +28,6 @@ object SecureShowTest extends JUnitRunnableSpec {
 
       assert(confStr)(equalTo(expected))
     },
-
     test("convert case class with data masking password field") {
       // given
       import Leda.auto.SecureShowDerivation._
