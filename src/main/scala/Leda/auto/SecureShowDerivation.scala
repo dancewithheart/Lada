@@ -3,8 +3,6 @@ package Leda.auto
 import Leda.SecureShow
 import magnolia.{CaseClass, Magnolia, Param, SealedTrait, Subtype}
 
-import scala.language.experimental.macros
-
 object SecureShowDerivation {
   val hideField = List("password")
 
