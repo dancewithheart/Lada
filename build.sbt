@@ -13,12 +13,5 @@ libraryDependencies ++= Seq(
   "com.propensive"  %% "magnolia"       % "0.17.0",
 
   "dev.zio"         %% "zio-test"       % zioVersion % Test,
-  "dev.zio"         %% "zio-test-sbt"   % zioVersion % Test,
-  "dev.zio"         %% "zio-test-junit" % zioVersion % Test,
+  "dev.zio"         %% "zio-test-sbt"   % zioVersion % Test
 )
-
-scalacOptions ++= Seq(
-  "-encoding", "UTF-8"
-)
-
-testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
