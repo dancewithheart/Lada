@@ -1,14 +1,14 @@
 package Leda.auto
 
 import Leda.SecureShow
-import magnolia.{CaseClass, Magnolia, Param, SealedTrait, Subtype}
+import magnolia1.{CaseClass, Magnolia, Param, SealedTrait, Subtype}
 
 object SecureShowDerivation {
   val hideField = List("password")
 
   type Typeclass[T] = SecureShow[T]
 
-  def combine[T](caseClass: CaseClass[SecureShow, T]): SecureShow[T] =
+  def join[T](caseClass: CaseClass[SecureShow, T]): SecureShow[T] =
     new SecureShow[T] {
       override def show(t: T): String = {
         val asStr = caseClass.parameters
@@ -22,10 +22,10 @@ object SecureShowDerivation {
       }
     }
 
-  def dispatch[T](sealedTrait: SealedTrait[SecureShow, T]): SecureShow[T] =
+  def split[T](sealedTrait: SealedTrait[SecureShow, T]): SecureShow[T] =
     new SecureShow[T] {
       def show(t: T): String =
-        sealedTrait.dispatch(t) { s: Subtype[SecureShow, T] =>
+        sealedTrait.split(t) { s: Subtype[SecureShow, T] =>
           s.typeclass.show(s.cast(t))
         }
     }

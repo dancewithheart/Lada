@@ -8,10 +8,8 @@ lazy val root = project in file(".")
 
 val zioVersion = "2.1.20"
 libraryDependencies ++= Seq(
- "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided,
-
-  "com.propensive"  %% "magnolia"       % "0.17.0",
-
+  "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided,
+  "com.softwaremill.magnolia1_2" %% "magnolia" % "1.1.10",
   "dev.zio"         %% "zio-test"       % zioVersion % Test,
   "dev.zio"         %% "zio-test-sbt"   % zioVersion % Test
 )
